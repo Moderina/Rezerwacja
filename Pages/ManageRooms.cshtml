@@ -1,0 +1,55 @@
+﻿@page
+@model Rezerwacja.Pages.ManageRoomsModel
+@{
+}
+
+<div>
+    <h1>Add Room</h1>
+    <form method="post" asp-page-handler="AddRoom">
+        <input asp-for="room.MaxPeople" type="text" placeholder="Max people" />
+        @*<input asp-for="room" type="text" placeholder="Category" />*@
+        <select id="categorySelect" asp-for="category">
+            <option value="">Select a category</option>
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Name">@category.Name</option>
+            }
+        </select>
+        <button type="submit" name="buildID" value="@Model.buildid">Add</button>
+    </form>
+</div>
+
+<div>
+    <h1>Add Category or Equipment</h1>
+    <form method="post" asp-page-handler="AddCatEq">
+        <input asp-for="category" type="text" placeholder="New Category" />
+        <input asp-for="category" type="text" placeholder="Category" />
+        <button type="submit" name="buildID" value="@Model.buildid">Add</button>
+    </form>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>Number</th>
+        <th>Max people</th>
+        <th>Categories</th>
+        <th>Equipment</th>
+    </tr>
+    @foreach (var room in Model.rooms)
+    {
+        <tr>
+            <td>@room.Id</td>
+            <td>@room.MaxPeople</td>
+
+            <td>
+                @room.Categories
+            </td>
+            <td>
+                @room.Equipment
+            </td>
+        </tr>
+
+
+    }
+</table>

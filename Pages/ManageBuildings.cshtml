@@ -1,0 +1,42 @@
+﻿@page
+@model Rezerwacja.Pages.ManageBuildingsModel
+@{
+}
+
+<div>
+    <h1>Add building</h1>
+    <form method="post" asp-page-handler="AddBuilding">
+        <input asp-for="Building.Name" type="text" placeholder="Name" />
+        <input asp-for="Building.Street" type="text" placeholder="Street" />
+        <input asp-for="Building.City" type="text" placeholder="City" />
+        <input asp-for="Building.ZipCode" type="text" placeholder="ZipCode" />
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    @foreach (var building in Model.Buildings)
+    {
+        <tr>
+            <td>@building.Id</td>
+            <td>@building.Name</td>
+
+            <td>
+                <form method="post" asp-page-handler="GoToRooms">
+                    <input type="hidden" name="buildID" value="@building.Id" />
+                    <button type="submit">See Rooms</button>
+                </form>
+            </td>
+        </tr>
+
+
+    }
+</table>
