@@ -23,6 +23,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IBuildingRepo, BuildingRepo>();
 builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IReservationService, ReservationService>();
 
 var app = builder.Build();
 

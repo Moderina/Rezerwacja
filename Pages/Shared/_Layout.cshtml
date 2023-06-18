@@ -22,13 +22,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
                         @if (User.IsInRole("admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/ManageBuildings">Admin Tools</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AdminApprove">Zatwierdz Rezerwacje</a>
+                            </li>
+                        }
+                        @if (!User.IsInRole("admin") && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserReservations">Twoje rezerwacje</a>
                             </li>
                         }
                     </ul>

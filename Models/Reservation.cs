@@ -10,8 +10,8 @@ namespace Rezerwacja.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string UserId { get; set; }  
-        public int RoomId { get; set; }  
-        public bool Approved { get; set; }  
+        public int RoomId { get; set; }
+        public bool Approved { get; set; } = false;
 
     }
 }

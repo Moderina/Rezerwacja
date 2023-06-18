@@ -5,6 +5,54 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4">Zarezerwuj sale</h1>
+ </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+        <form method="post" asp-page-handler="Search">
+            <input asp-for="SearchVM.MaxPeople" type="text" placeholder="Max people" value="" />
+            <select class="custom-select" asp-for="SearchVM.Category" multiple>
+                @foreach (var category in Model.Categories)
+                {
+                    <option value="@category.Name">@category.Name</option>
+                }
+            </select>
+            <select class="custom-select" asp-for="SearchVM.Equipment" multiple>
+                @foreach (var eq in Model.Equipment)
+                {
+                    <option value="@eq.Name">@eq.Name</option>
+                }
+            </select>
+            <input asp-for="SearchVM.TimeStart" type="date" required />
+            <br />
+            <button type="submit">Wyszukaj</button>
+        </form>
+    </div>
+
+
+    <div>
+        @foreach (var room in Model.resultRooms)
+        {
+            <div class="room">
+                <div>
+                    <span>Nr sali: @room.Id</span>
+                    <span>Max osob: @room.MaxPeople</span>
+                </div>
+                <div>
+                    <span class="equipment">@room.Equipment</span>
+                    <span class="category">@room.Category</span>
+                </div>
+                <form method="post" asp-page-handler="Reserve">
+                    <input type="hidden" asp-for="SearchVM.TimeStart" />
+                    <button type="submit" name="roomId" value="@room.Id">Zarezerwuj</button>
+                </form>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h2 class="text-center">Musisz sie zalogowac zeby rezerwowac sale</h2>
+}

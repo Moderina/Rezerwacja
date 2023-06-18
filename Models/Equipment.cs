@@ -7,7 +7,5 @@ namespace Rezerwacja.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public ICollection<RoomEquipment> RoomEquipment { get; set; }
     }
 }

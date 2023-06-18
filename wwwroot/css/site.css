@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.room {
+    background-color: darkgray;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10px;
+}
+
+.equipment {
+    padding-left: 15px;
+}
+
+.category {
+    float: right;
+    padding-right: 15px;
+}

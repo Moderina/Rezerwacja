@@ -1,0 +1,32 @@
+﻿@page
+@model Rezerwacja.Pages.UserReservationsModel
+@{
+}
+
+<table class="table">
+    <tr>
+        <th>Nr rezerwacji</th>
+        <th>Data</th>
+        <th>Nr sali</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var reservation in Model.Reservations)
+    {
+        <tr>
+            <td>@reservation.Id</td>
+            <td>@reservation.StartTime.Date</td>
+            <td>@reservation.RoomId</td>
+            <td>@reservation.Approved</td>
+
+            <td>
+                <form method="post">
+                    <input type="hidden" name="id" value="@reservation.Id" />
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+
+
+    }
+</table>
