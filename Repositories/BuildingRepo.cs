@@ -50,10 +50,8 @@ namespace Rezerwacja.Repositories
                     result = result.Where(d => d.Equipment.Contains(eq)).ToList();
                 }
             }
-            System.Diagnostics.Debug.WriteLine(searchVM.TimeStart);
             var reservations = _context.Reservations.Where(d => d.StartTime.Date == searchVM.TimeStart).ToList();
             result = result.Where(d => !reservations.Select(r => r.RoomId).Contains(d.Id)).ToList();
-            System.Diagnostics.Debug.WriteLine("DDDDD" + result.Count());
             return result;
         }
 

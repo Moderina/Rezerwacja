@@ -31,7 +31,6 @@ namespace Rezerwacja.Pages
         public List<Category> Categories { get; set; }
 
         public readonly BookingContext _context;
-
         public readonly IRoomService _roomService;
 
 
@@ -46,7 +45,6 @@ namespace Rezerwacja.Pages
             {
                 buildid = buildingID;
             }
-            System.Diagnostics.Debug.WriteLine("vvvvvvv" + buildid);
 
             rooms = _roomService.GetRoomVMs(buildid);
             Categories = _roomService.GetCategories();
@@ -57,8 +55,6 @@ namespace Rezerwacja.Pages
         public void OnPostAddRoom(int buildID)
         {
             _roomService.checkEq(room.Equipment);
-            System.Diagnostics.Debug.WriteLine("vvvvvvv" + buildid);
-            System.Diagnostics.Debug.WriteLine("vvvvvvv" + buildID);
 
             Room Room = new Room()
             {

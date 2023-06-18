@@ -23,8 +23,6 @@ namespace Rezerwacja.Pages
 
         public void OnPost(int id)
         {
-            System.Diagnostics.Debug.WriteLine("vvvvvvv" + id);
-
             _reservationService.RemoveReservation(id);
             Reservations = _reservationService.GetUserReservations(User.FindFirstValue(ClaimTypes.NameIdentifier));
         }

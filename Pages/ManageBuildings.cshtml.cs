@@ -31,7 +31,6 @@ namespace Rezerwacja.Pages
 
         public IActionResult OnPostGoToRooms(int buildID)
         {
-            System.Diagnostics.Debug.WriteLine("wwwwwwwwwwwwwww" + buildID);
             TempData["Building"] = buildID;
             return Redirect("/ManageRooms");
         }

@@ -41,9 +41,6 @@ namespace Rezerwacja.Pages
 
         public void OnPostSearch(DateTime date)
         {
-            System.Diagnostics.Debug.WriteLine("EEEE" + SearchVM.TimeStart + "eee" + DateTime.Now.AddYears(2));
-
-            System.Diagnostics.Debug.WriteLine("FFFFFFF" + SearchVM.MaxPeople);
             resultRooms = _roomService.GetSearchRooms(SearchVM);
             Equipment = _roomService.GetEquipment();
             Categories = _roomService.GetCategories();
@@ -51,11 +48,8 @@ namespace Rezerwacja.Pages
 
         public void OnPostReserve(int roomId)
         {
-            System.Diagnostics.Debug.WriteLine("WWWW" + SearchVM.TimeStart + "www" + DateTime.Now);
-
             if (SearchVM.TimeStart >= DateTime.Now && SearchVM.TimeStart <= DateTime.Now.AddYears(2))
             {
-
                 Reservation reservation = new Reservation
                 {
                     RoomId = roomId,
@@ -68,7 +62,6 @@ namespace Rezerwacja.Pages
             resultRooms = _roomService.GetSearchRooms(SearchVM);
             Equipment = _roomService.GetEquipment();
             Categories = _roomService.GetCategories();
-
         }
     }
 }
